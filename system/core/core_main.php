@@ -5,7 +5,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/PIMS/application/controller/controlle
 
 class core_main {
 
- 	public function __construct() {
+ 	function __construct() {
 		$this->cfg = new config();
 		$this->main = new controller_main();
 	}

@@ -4,11 +4,9 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/PIMS/system/core/core_controller.php"
 
 class controller_main extends core_controller {
 
-	public function load_view($url, $data = NULL) {
-		if ($data != NULL) {
-			extract($data);
-		}
-		return require($_SERVER["DOCUMENT_ROOT"] . "/PIMS/application/view/" . $url . ".php");
+	function __construct() {
+		$this->load = new core_loader();
+		$this->model("read");
 	}
 
 	public function index() {
@@ -20,7 +18,7 @@ class controller_main extends core_controller {
 	}
 	public function view_dashboard() {
 		$data["head_title"] = "Dashboard - PIMS";
-
+		$data["table"] = $this->read->get_admins();
 		$this->load->view("dashboard", $data);
 	}
 }

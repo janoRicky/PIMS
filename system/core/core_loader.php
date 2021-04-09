@@ -4,7 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/PIMS/application/config/config.php";
 
 class core_loader {
 
- 	public function __construct() {
+ 	function __construct() {
  		$this->config = new config();
  	}
 
