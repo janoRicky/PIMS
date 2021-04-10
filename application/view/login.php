@@ -24,12 +24,12 @@ $this->view("template/head", array("title" => $head_title));
 				<form action="#" method="POST" target="./admin/dashboard.php">
 					<div class="row">
 						<div class="row_2"></div>
-						<div class="row_8">
+						<div class="row_8 text_center">
 							<h2>Username:</h2>
-							<input class="inp_text" type="text" name="">
+							<input class="text" type="text" name="">
 							<h2>Password:</h2>
-							<input class="inp_text" type="text" name="">
-							<input class="inp_button mt_2" type="submit" name="login" value="LOGIN">
+							<input class="text" type="text" name="">
+							<input class="button mt_2" type="submit" name="login" value="LOGIN">
 						</div>
 						<div class="row_2"></div>
 					</div>

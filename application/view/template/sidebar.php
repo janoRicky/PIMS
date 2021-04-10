@@ -19,19 +19,19 @@
 	<ul>
 		<br>
 		<a href="dashboard">
-			<li class="<?=($active == 'dashboard'?'active':'')?> row">
+			<li class="<?=($active == 'dashboard'?'active ':'')?>row">
 				<div class="row_3 icon">&#8962;</div>
 				<div class="row_9 text">&nbsp;Dashboard</div>
 			</li>
 		</a>
-		<a href="<?=($active == 'items'?'active':'')?> items">
-			<li class="row">
+		<a href="items">
+			<li class="<?=($active == 'items'?'active ':'')?>row">
 				<div class="row_3 icon">&#128463;</div>
 				<div class="row_9 text">&nbsp;Items</div>
 			</li>
 		</a>
-		<a href="<?=($active == 'accounts'?'active':'')?> accounts">
-			<li class="row">
+		<a href="accounts">
+			<li class="<?=($active == 'accounts'?'active ':'')?>row">
 				<div class="row_3 icon">&#197;</div>
 				<div class="row_9 text">&nbsp;Accounts</div>
 			</li>

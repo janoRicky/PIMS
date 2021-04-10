@@ -38,16 +38,52 @@ class core_model extends db {
 
 		return $stmt;
 	}
-
-	public function select($table, $conditions = NULL, $what = NULL) {
-		if ($conn = $this->connect()){
-			if ($what == "*" || $what == NULL) {
-				$sql = "SELECT * FROM $table";
-			} else {
-				$sql = "SELECT $what FROM $table";
+	function get_rows($table, $search=NULL) {
+		if ($search != NULL) {
+			$columns = $this->get_columns($table);
+			foreach ($columns as $key => $val) {
+				$conditions[$val] = "%" . $search . "%";
 			}
+			$c_operator = 1;
+		} else {
+			$conditions = NULL;
+			$c_operator = NULL;
+		}
+		return $this->select($table, $conditions, $c_operator, NULL, "COUNT(*)")->fetch_row()[0];
+	}
+	function get_columns($table) {
+		if ($conn = $this->connect()){
+			$sql = "SHOW COLUMNS FROM $table";
+			$stmt = $conn->prepare($sql);
+			
+			if ($stmt->execute()) {
+				$result = $stmt->get_result();
+			}
+			$stmt->close();
+			$conn->close();
+		}
+		foreach ($result as $val) {
+			$columns[] = $val["Field"];
+		}
+		return $columns;
+	}
+	function general_search($table, $search=NULL, $page=NULL) {
+		$columns = $this->get_columns($table);
+		foreach ($columns as $key => $val) {
+			$search_param[$val] = "%" . $search . "%";
+		}
+		return $this->select($table, $search_param, 1, $page);
+	}
 
-			$stmt = NULL;
+	function select($table, $conditions=NULL, $c_operator=NULL, $page=NULL, $selector=NULL) {
+		if ($conn = $this->connect()){
+			if ($selector != NULL) {
+				$sql = "SELECT $selector FROM $table";
+			} else {
+				$sql = "SELECT * FROM $table";
+			}
+			$bind_data = array();
+
 			if ($conditions != NULL) {
 				$sql .= " WHERE ";
 
@@ -56,16 +92,37 @@ class core_model extends db {
 				$param_var = "";
 				foreach ($conditions as $key => $val) {
 					$arr_count++;
-					$sql .= "$key = ?";
+					if ($c_operator == 1) {
+						$sql .= "$key LIKE ?";
+					} else {
+						$sql .= "$key = ?";
+					}
 					if ($arr_size > 1 && $arr_count != $arr_size) {
-						$sql .= " AND ";
+						if ($c_operator == 1) {
+							$sql .= " OR ";
+						} else {
+							$sql .= " AND ";
+						}
 					}
 				}
 
-				$stmt = $conn->prepare($sql);
-				$stmt = $this->param_binder($stmt, $conditions);
-			} else {
-				$stmt = $conn->prepare($sql);
+				$bind_data = array_merge($bind_data, $conditions);
+			}
+
+			if ($page != NULL) {
+				$limit = $this->cfg->page_limit();
+				$offset = ($page - 1) * $limit;
+				$other = array("LIMIT" => $limit, "OFFSET" => $offset);
+				foreach ($other as $key => $val) {
+					$sql .= " $key ?";
+					$temp_arr = array($key => $val);
+					$bind_data = array_merge($bind_data, $temp_arr);
+				}
+			}
+
+			$stmt = $conn->prepare($sql);
+			if (!empty($bind_data)) {
+				$stmt = $this->param_binder($stmt, $bind_data);
 			}
 			
 			if ($stmt->execute()) {
@@ -76,7 +133,7 @@ class core_model extends db {
 		}
 		return $result;
 	}
-	public function add($table, $data,) {
+	function add($table, $data) {
 		if ($conn = $this->connect()){
 			$sql = "INSERT INTO $table (";
 
@@ -107,7 +164,7 @@ class core_model extends db {
 		}
 		return $result;
 	}
-	public function update($table, $data, $conditions) {
+	function update($table, $data, $conditions) {
 		if ($conn = $this->connect()){
 			$sql = "UPDATE $table SET ";
 
@@ -135,10 +192,10 @@ class core_model extends db {
 				}
 			}
 
-			$data = array_merge($data, $conditions);
+			$bind_data = array_merge($data, $conditions);
 
 			$stmt = $conn->prepare($sql);
-			$stmt = $this->param_binder($stmt, $data);
+			$stmt = $this->param_binder($stmt, $bind_data);
 			
 			if ($stmt->execute()) {
 				$result = $stmt->get_result();
@@ -148,7 +205,7 @@ class core_model extends db {
 		}
 		return $result;
 	}
-	public function delete($table, $conditions) {
+	function delete($table, $conditions) {
 		if ($conn = $this->connect()){
 			$sql = "DELETE FROM $table WHERE ";
 

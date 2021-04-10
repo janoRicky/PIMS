@@ -1,5 +1,6 @@
 <?php
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/PIMS/application/config/config.php";
 
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
@@ -9,28 +10,25 @@ define('DB_NAME', 'pharmacy_db');
 
 class db {
 
-	private $server;
-	private $username;
-	private $password;
-	private $name;
-
 	function __construct() {
 		$this->server = DB_SERVER;
 		$this->username = DB_USERNAME;
 		$this->password = DB_PASSWORD;
 		$this->name = DB_NAME;
+
+		$this->cfg = new config();
 	}
 
-	public function server() {
+	protected function server() {
 		return $this->server;
 	}
-	public function username() {
+	protected function username() {
 		return $this->username;
 	}
-	public function password() {
+	protected function password() {
 		return $this->password;
 	}
-	public function name() {
+	protected function name() {
 		return $this->name;
 	}
 }
