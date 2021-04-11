@@ -4,7 +4,12 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/PIMS/system/core/core_model.php";
 
 class model_delete extends core_model {
 
-	public function admin_get() {
-		return $this->select("adm_accounts");
+// ITEM
+	public function item_delete($id) {
+		return $this->delete("p_items", array("id" => $id));
+	}
+// ADMIN
+	public function admin_delete($id) {
+		return $this->delete("adm_accounts", array("id" => $id));
 	}
 }

@@ -156,9 +156,8 @@ class core_model extends db {
 			$stmt = $conn->prepare($sql);
 			$stmt = $this->param_binder($stmt, $data);
 			
-			if ($stmt->execute()) {
-				$result = $stmt->get_result();
-			}
+			$result = $stmt->execute();
+
 			$stmt->close();
 			$conn->close();
 		}
@@ -197,9 +196,8 @@ class core_model extends db {
 			$stmt = $conn->prepare($sql);
 			$stmt = $this->param_binder($stmt, $bind_data);
 			
-			if ($stmt->execute()) {
-				$result = $stmt->get_result();
-			}
+			$result = $stmt->execute();
+
 			$stmt->close();
 			$conn->close();
 		}
@@ -223,9 +221,8 @@ class core_model extends db {
 			$stmt = $conn->prepare($sql);
 			$stmt = $this->param_binder($stmt, $conditions);
 			
-			if ($stmt->execute()) {
-				$result = $stmt->get_result();
-			}
+			$result = $stmt->execute();
+			
 			$stmt->close();
 			$conn->close();
 		}

@@ -37,7 +37,7 @@
 			</li>
 		</a>
 		<br><br>
-		<a href="login">
+		<a href="logout">
 			<li class="row">
 				<div class="row_3 icon">&#10550;</div>
 				<div class="row_9 text">&nbsp;Logout</div>

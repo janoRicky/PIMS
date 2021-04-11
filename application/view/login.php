@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Pharmacy Inventory Management System</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
+</head>
 <?php
-$this->view("template/head", array("title" => $head_title));
+$this->view("template/notifications");
 ?>
 <body>
 	<div class="cont">
@@ -21,15 +26,15 @@ $this->view("template/head", array("title" => $head_title));
 						</span>
 					</div>
 				</div>
-				<form action="#" method="POST" target="./admin/dashboard.php">
+				<form action="login_v" method="POST">
 					<div class="row">
 						<div class="row_2"></div>
 						<div class="row_8 text_center">
-							<h2>Username:</h2>
-							<input class="text" type="text" name="">
+							<h2>Email:</h2>
+							<input class="textbox txt_md" type="text" name="inp_email">
 							<h2>Password:</h2>
-							<input class="text" type="text" name="">
-							<input class="button mt_2" type="submit" name="login" value="LOGIN">
+							<input class="textbox txt_md" type="password" name="inp_password">
+							<input class="button btn_lg mt_2" type="submit" name="login" value="LOGIN">
 						</div>
 						<div class="row_2"></div>
 					</div>

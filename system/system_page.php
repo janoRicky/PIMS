@@ -10,3 +10,5 @@ if (!isset($_GET["page"])) {
 	$page = $_GET["page"];
 	echo $core->route($page);
 }
+
+unset($_SESSION["alert"]);

@@ -7,50 +7,156 @@ class controller_main extends core_controller {
 	function __construct() {
 		$this->load = new core_loader();
 		$this->model("read");
+
+		date_default_timezone_set("Asia/Manila");
 	}
 
-	public function view_login() {
+	function logout() {
+		session_destroy();
+		$this->load->view("login");
+	}
+
+	function page_details($page_no, $table_size, $page_limit) {
+		$desc = "Showing " . ((($page_no - 1) * $page_limit) + 1) . "-" . ($page_no * $page_limit < $table_size ? $page_no * $page_limit : $table_size) . " results of " . $table_size . " rows.";
+		$prev = NULL;
+		$next = NULL;
+		if ($page_no > 1) {
+			$prev = ($page_no - 1);
+		}
+		if ($table_size > ($page_no * $page_limit)) {
+			$next = ($page_no + 1);
+		}
+		$details = array(
+			"desc" => $desc,
+			"prev" => $prev,
+			"next" => $next
+		);
+		return $details;
+	}
+
+	function view_login() {
 		$data["head_title"] = "Pharmacy Inventory System";
 
 		$this->load->view("login", $data);
 	}
-	public function view_dashboard() {
+	function view_dashboard() {
 		$data["head_title"] = "Dashboard - PIMS";
+		$data["nav_link"] = "dashboard";
+		$data["nav_text"] = "Dashboard";
+
+		$data["item_count"] = $table_size = $this->read->item_count();
+		$data["admin_count"] = $table_size = $this->read->admin_count();
 
 		$this->load->view("dashboard", $data);
 	}
-	public function view_items() {
+	// ITEMS
+	function view_items() {
+		$page = (int)$this->get("pg");
+		$search = $this->get("search");
+
 		$data["head_title"] = "Items - PIMS";
+		$data["nav_link"] = "items";
+		$data["nav_text"] = "Items";
+
+		if ($page == NULL) {
+			$page = 1;
+		}
+		if ($search != NULL) {
+			$data["search_val"] = $search;
+			$table_size = $this->read->item_search_count($data["search_val"]);
+			$data["table"] = $this->read->item_search($data["search_val"], $page);
+		} else {
+			$data["search_val"] = NULL;
+			$table_size = $this->read->item_count();
+			$data["table"] = $this->read->item_get($page);
+		}
+
+		$page_limit = $this->load->cfg->page_limit();
+		$data["page_details"] = $this->page_details($page, $table_size, $page_limit);
 
 		$this->load->view("items", $data);
 	}
-	public function view_accounts() {
+	function view_item() {
+		$id = $this->get("id");
+
+		$data["head_title"] = "Item View - PIMS";
+		$data["nav_link"] = "items";
+		$data["nav_text"] = "Items > View";
+
+		if ($id != NULL) {
+			$data["table"] = $this->read->item_det_get($id);
+			$this->load->view("items_view", $data);
+		} else {
+			header("Location: items");
+		}
+	}
+	function view_item_update() {
+		$id = $this->get("id");
+
+		$data["head_title"] = "Item View - PIMS";
+		$data["nav_link"] = "items";
+		$data["nav_text"] = "Items > Edit";
+
+		if ($id != NULL) {
+			$data["table"] = $this->read->item_det_get($id);
+			$this->load->view("items_edit", $data);
+		} else {
+			header("Location: items");
+		}
+	}
+	// ACCOUNTS
+	function view_accounts() {
+		$page = (int)$this->get("pg");
+		$search = $this->get("search");
+
 		$data["head_title"] = "Accounts - PIMS";
 		$data["nav_link"] = "accounts";
 		$data["nav_text"] = "Accounts";
 
-		if (isset($_GET["pg"]) && $_GET["pg"] != NULL) {
-			if ((int)$_GET["pg"] < 1) {
-				$page = 1;
-			} else {
-				$page = (int)$_GET["pg"];
-			}
-		} else {
+		if ($page == NULL) {
 			$page = 1;
 		}
-		if (isset($_GET["search"]) && $_GET["search"] != NULL) {
-			$data["search_val"] = $_GET["search"];
-			$data["table_size"] = $this->read->admin_search_count($data["search_val"]);
+		if ($search != NULL) {
+			$data["search_val"] = $search;
+			$table_size = $this->read->admin_search_count($data["search_val"]);
 			$data["table"] = $this->read->admin_search($data["search_val"], $page);
 		} else {
-			$data["table_size"] = $this->read->admin_count();
+			$data["search_val"] = NULL;
+			$table_size = $this->read->admin_count();
 			$data["table"] = $this->read->admin_get($page);
 		}
 
-		$data["page_limit"] = $this->load->cfg->page_limit();
-		$data["acc_pg"] = $page;
-		
+		$page_limit = $this->load->cfg->page_limit();
+		$data["page_details"] = $this->page_details($page, $table_size, $page_limit);
 
 		$this->load->view("accounts", $data);
+	}
+	function view_account() {
+		$id = $this->get("id");
+
+		$data["head_title"] = "Account View - PIMS";
+		$data["nav_link"] = "accounts";
+		$data["nav_text"] = "Accounts > View";
+
+		if ($id != NULL) {
+			$data["table"] = $this->read->admin_acc_get($id);
+			$this->load->view("accounts_view", $data);
+		} else {
+			header("Location: accounts");
+		}
+	}
+	function view_account_update() {
+		$id = $this->get("id");
+
+		$data["head_title"] = "Account View - PIMS";
+		$data["nav_link"] = "accounts";
+		$data["nav_text"] = "Accounts > Edit";
+
+		if ($id != NULL) {
+			$data["table"] = $this->read->admin_acc_get($id);
+			$this->load->view("accounts_edit", $data);
+		} else {
+			header("Location: accounts");
+		}
 	}
 }
