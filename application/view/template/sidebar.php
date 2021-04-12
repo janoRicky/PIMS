@@ -2,7 +2,7 @@
 	<div class="row mt_2">
 		<div class="row_3"></div>
 		<div class="row_6">
-			<img class="logo" src="./assets/img/PIS.png">
+			<img class="logo" src="./assets/img/PIMS_logo.png">
 		</div>
 		<div class="row_3"></div>
 	</div>

@@ -5,7 +5,7 @@ session_start();
 class config {
 
 	function __construct() {
-		$this->page_limit = 25;
+		$this->page_limit = 15;
 		$this->notif_timeout = 5000;
 
 		$this->base_url = $_SERVER["SERVER_NAME"] . "/PIMS/";

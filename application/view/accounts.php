@@ -19,26 +19,27 @@ $this->view("template/notifications");
 								<input class="textbox txt_sm" type="text" name="search" value="<?=(isset($search_val) ? $search_val : "")?>">
 							</div>
 							<div class="row_2 text_center">
-								<input class="button btn_sm" type="submit" value="SEARCH">
+								<input class="button btn_sm" type="submit" value="&#128270; SEARCH">
 							</div>
 						</div>
 					</form>
 					<div class="row mt_1">
-						<div class="row_9">
+						<div class="row_8">
 							<h4><?=$page_details["desc"]?></h4>
 						</div>
-						<div class="row_3 text_right">
-							<button id="btn_add" class="button btn_lg mr_1">ADD</button>
+						<div class="row_4 text_right">
+							<button id="btn_print" class="button btn_md mr_1"><span class="text_md">&#128438;</span> PRINT</button>
+							<button id="btn_add" class="button btn_md mr_1"><span class="text_md">&#43;</span> ADD</button>
 						</div>
 					</div>
-					<div class="table_container">
+					<div id="table_container" class="table_container">
 						<table class="table">
 							<thead>
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
 									<th>Email</th>
-									<th>Action</th>
+									<th class="table_exclude">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -47,16 +48,16 @@ $this->view("template/notifications");
 									<td><?=$val["id"]?></td>
 									<td><?=$val["name"]?></td>
 									<td><?=$val["email"]?></td>
-									<td class="text_center">
+									<td class="table_exclude text_center">
 										<form action="account_view" method="GET">
 											<input type="hidden" name="id" value="<?=$val["id"]?>">
-											<input class="button btn_md" type="submit" value="View">
+											<input class="button btn_md" type="submit" value="&#128065; View">
 										</form>
 										<form action="account_update_view" method="GET">
 											<input type="hidden" name="id" value="<?=$val["id"]?>">
-											<input class="button btn_md" type="submit" value="Edit">
+											<input class="button btn_md" type="submit" value="&#128395; Edit">
 										</form>
-										<button class="button btn_sm btn_delete" value="<?=$val["id"]?>">Delete</button>
+										<button class="button btn_sm btn_delete" value="<?=$val["id"]?>">&#128465; Delete</button>
 									</td>
 								</tr>
 								<?php endforeach; ?>
@@ -154,6 +155,10 @@ $this->view("template/notifications");
 	}
 	document.querySelector("#win_delete_close").onclick = function() {
 		document.querySelector("#win_delete").style.display = "none";
+	};
+
+	document.querySelector("#btn_print").onclick = function() {
+		window.print();
 	};
 </script>
 </html>

@@ -15,7 +15,7 @@ $this->view("template/notifications");
 			<div class="row_4 login_container mt_3">
 				<div class="row cont_center">
 					<div class="row_6">
-						<img class="logo" src="./assets/img/PIS.png">
+						<img class="logo" src="./assets/img/PIMS_logo.png">
 					</div>
 					<div class="row_6">
 						<span class="title">
