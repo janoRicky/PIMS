@@ -143,4 +143,5 @@ $this->view("template/notifications");
 		document.querySelector("#win_delete").style.display = "none";
 	};
 </script>
+<script type="text/javascript" src="./assets/js/script.js"></script>
 </html>

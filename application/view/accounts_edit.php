@@ -55,7 +55,5 @@ $this->view("template/notifications");
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript" src="./assets/js/script.js"></script>
 </html>

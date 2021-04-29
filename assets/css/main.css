@@ -20,9 +20,23 @@ button {
 	font-weight: bold;
 }
 
+.cross_container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.cross {
+	position: absolute;
+	z-index: 1;
+}
+
 .wrapping {
 	width: 100%;
 	display: inline-block;
+	position: relative;
+	z-index: 2;
 }
 .cont {
 	display: flex;
