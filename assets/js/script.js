@@ -39,6 +39,7 @@ for (var i = 0; i < 4; i++) {
 	var cross = crosses[("c_" + (i + 1))];
 	var img = document.createElement("img");
 	img.classList.add("cross");
+	img.classList.add("table_exclude");
 	img.src = "./assets/img/cross.png";
 	img.style = cross.pos_1 + ": 0;" + cross.pos_2 + ": 0;";
 	img.width = cross.size;
@@ -86,5 +87,11 @@ setInterval(function() {
 		rotate += 1;
 
 		c.style = cross.pos_1 + ":" + pos_1 + "px;" + cross.pos_2 + ":" + pos_2 + "px; transform: rotate("+ rotate +"deg);";
+
+		if (i % 2 == 0) {
+			c.style = cross.pos_1 + ":" + pos_1 + "px;" + cross.pos_2 + ":" + pos_2 + "px; transform: rotate("+ rotate +"deg);";
+		} else {
+			c.style = cross.pos_1 + ":" + pos_1 + "px;" + cross.pos_2 + ":" + pos_2 + "px; transform: rotate(-"+ rotate +"deg);";
+		}
 	}
 }, 50);

@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar table_exclude">
 	<div class="row mt_2">
 		<div class="row_3"></div>
 		<div class="row_6">
@@ -34,6 +34,13 @@
 			<li class="<?=($active == 'accounts'?'active ':'')?>row">
 				<div class="row_3 icon">&#197;</div>
 				<div class="row_9 text">&nbsp;Accounts</div>
+			</li>
+		</a>
+		<br>
+		<a href="about_me">
+			<li class="<?=($active == 'accounts'?'active ':'')?>row">
+				<div class="row_3 icon">&#63;</div>
+				<div class="row_9 text">&nbsp;About Me</div>
 			</li>
 		</a>
 		<br><br>

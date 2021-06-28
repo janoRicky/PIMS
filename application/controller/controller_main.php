@@ -15,6 +15,13 @@ class controller_main extends core_controller {
 		session_destroy();
 		$this->load->view("login");
 	}
+	function view_about_me() {
+		$data["head_title"] = "About Me - PIMS";
+		$data["nav_link"] = "about_me";
+		$data["nav_text"] = "About Me";
+		
+		$this->load->view("about_me", $data);
+	}
 
 	function page_details($page_no, $table_size, $page_limit) {
 		$desc = "Showing " . ((($page_no - 1) * $page_limit) + 1) . "-" . ($page_no * $page_limit < $table_size ? $page_no * $page_limit : $table_size) . " results of " . $table_size . " rows.";
@@ -35,6 +42,10 @@ class controller_main extends core_controller {
 	}
 
 	function view_login() {
+		if (isset($_SESSION["admin_in"])) {
+			header("Location: dashboard");
+		}
+
 		$data["head_title"] = "Pharmacy Inventory System";
 
 		$this->load->view("login", $data);

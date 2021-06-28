@@ -9,7 +9,7 @@ $this->view("template/notifications");
 		<?php $this->view("template/sidebar", array("active" => "items")); ?>
 		<div class="content">
 			<?php $this->view("template/navbar", array("nav_link" => $nav_link, "nav_text" => $nav_text)); ?>
-			<div class="row">
+			<div class="row mb_3">
 				<div class="row_1"></div>
 				<div class="row_10">
 					<h1>ITEMS</h1>

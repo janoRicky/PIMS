@@ -13,6 +13,7 @@ class config {
 		$this->routes = array(
 			"login" => "main/view_login",
 			"dashboard" => "main/view_dashboard",
+			"about_me" => "main/view_about_me",
 			
 			// FUNCTION PAGES
 			"accounts" => "main/view_accounts",
