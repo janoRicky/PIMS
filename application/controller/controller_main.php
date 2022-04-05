@@ -11,6 +11,10 @@ class controller_main extends core_controller {
 		date_default_timezone_set("Asia/Manila");
 	}
 
+	function index() {
+		$this->load->view("login");
+	}
+
 	function logout() {
 		session_destroy();
 		$this->load->view("login");

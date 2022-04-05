@@ -22,9 +22,9 @@ class core_main {
 		header("Location: " . $dest);
 	}
 	public function route($rt) {
-		if ($rt == "index") {
-			$func_name = $this->cfg->routes()[$rt];
-			$this->main->$func_name();
+		if ($rt == "index" || $rt == "" || $rt == NULL) {
+			// $func_name = $this->cfg->routes()[$rt];
+			$this->main->index();
 		} elseif ($rt == "login") {
 			$this->main->view_login();
 		} elseif ($rt == "login_v") {
