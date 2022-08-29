@@ -14,15 +14,12 @@ $this->view("template/notifications");
 			<div class="row_4"></div>
 			<div class="row_4 login_container mt_3">
 				<div class="row cont_center">
-					<div class="row_6">
-						<img class="logo" src="./assets/img/PIMS_logo.png">
-					</div>
-					<div class="row_6">
+					<div class="row_12 text_center">
 						<span class="title">
-							<span class="cap">P</span>HARMACY<br> 
-							<span class="cap">I</span>NVENTORY<br> 
-							<span class="cap">M</span>ANAGEMENT<br> 
-							<span class="cap">S</span>YSTEM
+							<span class="cap">PHARMACY</span><br> 
+							<span class="cap">INVENTORY</span><br> 
+							<span class="cap">MANAGEMENT</span><br> 
+							<span class="cap">SYSTEM</span>
 						</span>
 					</div>
 				</div>

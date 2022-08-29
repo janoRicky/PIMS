@@ -1,3 +1,3 @@
-<div class="navbar" style="background-color: grey;">
+<div class="navbar">
 	&bull; <a href="<?=$nav_link?>"><?=$nav_text?></a>
 </div>

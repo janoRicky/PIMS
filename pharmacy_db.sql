@@ -39,24 +39,7 @@ CREATE TABLE `adm_accounts` (
 --
 
 INSERT INTO `adm_accounts` (`id`, `name`, `email`, `password`) VALUES
-(1, 'testerea', 'test@email.com', '$2y$10$KmgMSmRJgigBHHJ0OMC0de7rNaJY3VUG07eQds056/iEiHUVsJXA2'),
-(2, 'testing man', 'testinger@email.com', '7'),
-(4, 'tester', 'wawaweewa@email.com', '$2y$10$79fEWZxFba4s33U6oTS1OupCZOTy5EG1UQbcv81mhg4rKNKVn4.kq'),
-(7, 'tester', NULL, NULL),
-(9, 'Johnny Joestar', 'johnny@email.com', '$2y$10$hoVc47TE.JIcvih1ka.oHOJATKNSnkltqy7V3hM3VFkvSxpesOQTq'),
-(10, 'olol', 'ol@em.com', '$2y$10$B7O/lrxDVzFSWIYKiIcxTeU1/lC4lZ9aPz6aCosCKZLpE.eKJUHOO'),
-(11, 'ets', 'asd@eaw.n', '$2y$10$UkCxNFS5GYxpEimdwwPmY.9cgNVYqL6DYFMY2rmpLolapRHADxYJq'),
-(18, 'ets', 'asd@eaw.n', '$2y$10$bVfYq86XocX4HJ4MQhMIi.JMqmPjaDKbvo3vd2PYRjDNWZqvAOwv6'),
-(20, 'awfgh', 'ahnms@aea.ahjrs', '$2y$10$d97dCO3LhQSCdTnSAAwKweGS7ayaX1E/0o/nIOuUCSZ0Ft8R7fpLC'),
-(21, 'test', 'etas@ga', '$2y$10$luIjxAPo8CrJEM7aSrFcOerSAj3Wag6K7OOzz8jhgCHt89xQ.aF72'),
-(22, 'test', 'ew@ewe', '$2y$10$QOMco7ru6CyxB7rUmaHvQOoH36kDIuiYeBOhtlZ.qmlL.corC8P/i'),
-(23, 'tes2', 'ets@asf', '$2y$10$eSZobPs53G5WudxKre1TPu8WVQ3AonDdWYTnmyQ4f5Du1vuOHl2oq'),
-(24, 'testerea', 'test@email.com', '$2y$10$.rwIHoDZR//Oh2QDSsUF7uqu57u.eUQ.Q/.r3BRF3WCX/4nQwC9gK'),
-(25, 'testerea', 'test@email.com', '$2y$10$eJw/oH7agbQAxcVjPD8e4.kFR80yiqwFUuS/necQtF3Cmzt5TBpwW'),
-(26, 'testerea', 'test@email.com', '$2y$10$CCpbEQx8t/2lPdIKJbxgNueDa2ndq1RHMt7/6RDZli6suSgnturZe'),
-(27, 'tester', 'test@email.com', '$2y$10$D80sFChvziJrjKE1qAZZj.ghBs8pAEclHP8MQuVwVi8FdRawhY9Ye'),
-(28, 'testerea', 'test@email.com', '$2y$10$8zbDvasCkaJuU6bsuim4dOKXMgzj8r65uwdn0/eA8M0KxVgi8mjP.'),
-(29, 'tester', 'test@email.com', '$2y$10$vyE517xnzTWVS2zcA560V.WlxDk9E1Q3iPei91vDDm1lUX.LUrnpS');
+(1, 'testerea', 'test@email.com', '$2y$10$KmgMSmRJgigBHHJ0OMC0de7rNaJY3VUG07eQds056/iEiHUVsJXA2');
 
 -- --------------------------------------------------------
 
@@ -108,13 +91,13 @@ ALTER TABLE `p_items`
 -- AUTO_INCREMENT for table `adm_accounts`
 --
 ALTER TABLE `adm_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `p_items`
 --
 ALTER TABLE `p_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

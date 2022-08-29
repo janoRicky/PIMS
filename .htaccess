@@ -1,4 +1,4 @@
-DirectoryIndex system\system_page.php
+DirectoryIndex index.php
 
 RewriteEngine on
 

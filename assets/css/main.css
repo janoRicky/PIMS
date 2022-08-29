@@ -5,8 +5,8 @@ html {
 }
 body {
 	margin: 0;
-	background: #69ff00;
-	background: linear-gradient(180deg, #69ff00 10%, #ffffff 60%);
+	background: #fff;
+	/*background: linear-gradient(180deg, #000 10%, #ffffff 60%);*/
 	background-attachment: fixed;
 }
 a {
@@ -204,6 +204,7 @@ button {
 	width: 100%;
 	font-size: 1.2rem;
 	border-radius: 5px;
+	padding: 5px 10px;
 }
 .textbox.txt_sm {
 	font-size: 1rem;
@@ -212,7 +213,7 @@ button {
 	font-size: 1.2rem;
 }
 .button {
-	background-color: #36ba00;
+	background-color: #aaa;
 	border-radius: 5px;
 	font-weight: bold;
 
@@ -245,7 +246,7 @@ button {
 	overflow: auto;
 }
 .notif {
-	background-color: #72ff6e;
+	background-color: #ddd;
 	border: #ffffff solid 2px;
 	border-radius: 15px;
 	margin: auto;
@@ -274,7 +275,7 @@ button {
 }
 .window {
 	background-color: #ffffff;
-	border: #69ff00 solid 2px;
+	border: #000 solid 2px;
 	border-radius: 10px;
 	margin: auto;
 	margin-top: 2rem;
@@ -291,7 +292,7 @@ button {
 	width: 60%;
 }
 .window .win_head {
-	border-bottom: 1px solid #69ff00;
+	border-bottom: 1px solid #000;
 	padding: 1rem;
 	font-weight: bold;
 	font-size: 1.5rem;
@@ -300,7 +301,7 @@ button {
 	padding: 1rem;
 }
 .window .win_foot {
-	border-top: 1px solid #69ff00;
+	border-top: 1px solid #000;
 	padding: 1rem;
 	text-align: right;
 }
@@ -332,7 +333,7 @@ button {
 /* LOGIN */
 .login_container {
 	background-color: #ffffff;
-	border: #69ff00 solid 2px;
+	border: #000 solid 2px;
 	border-radius: 10px;
 	padding: 3rem;
 }
@@ -342,13 +343,13 @@ button {
 .title {
 	font-weight: bold;
 	font-size: 1.3rem;
-	color: #69ff00;
+	color: #000;
 }
 .title > .cap {
 	padding-right: 0.2rem;
 	font-weight: bolder;
 	font-size: 2.1rem;
-	color: #36ba00;
+	color: #000;
 }
 
 /* MAIN */
@@ -359,7 +360,9 @@ button {
 	position: fixed;
 	height: 100%;
 
-	background: linear-gradient(90deg, #36ba00 0%, #50ff00 3%, #aaff80 10%, #ddffcc 15%, #ffffff 20%, #ffffff 80%, #ddffcc 85%, #aaff80 90%, #50ff00 97%, #36ba00 100%);
+	/*background: linear-gradient(90deg, #aaa 0%, #50ff00 3%, #aaff80 10%, #ddffcc 15%, #ffffff 20%, #ffffff 80%, #ddffcc 85%, #aaff80 90%, #50ff00 97%, #aaa 100%);*/
+	background-color: #ddd;
+	border-right: 1px solid black;
 }
 .sidebar > ul {
 	padding: 0;
@@ -394,7 +397,13 @@ button {
 .navbar {
 	width: auto;
 	padding: 0.4rem 1.2rem;
-	background: linear-gradient(0deg, #36ba00 0%, #ffffff 10%, #eeffcc 92%, #36ba00 100%);
+	/*background: linear-gradient(0deg, #aaa 0%, #ffffff 10%, #eeffcc 92%, #aaa 100%);*/
+	background-color: #666;
+	color: #fff;
+	border-bottom: 1px solid #000;
+}
+.navbar a {
+	color: #fff;
 }
 /* TABLE */
 .table_container {
