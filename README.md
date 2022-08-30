@@ -11,3 +11,8 @@ This project also tries to imitate the functionalities of Bootstrap.
 
 
 THIS PROJECT WAS MADE AS AN INDIVIDUAL SCHOOL PROJECT
+
+
+# Screenshots:
+![alt text](https://github.com/janoRicky/PIMS/blob/main/assets/PIMS-1.jpg?raw=true)
+![alt text](https://github.com/janoRicky/PIMS/blob/main/assets/PIMS-2.jpg?raw=true)
